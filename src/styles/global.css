@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+  --color-primary: #ffd1dc; /* Soft pink */
+  --color-secondary: #e6e6fa; /* Soft purple */
+  --color-accent: #ff4d4d; /* Red */
+  --color-gold: #ffd700;
+  --color-white: #ffffff;
+  --color-dark: #1a1a1a;
+  
+  --font-handwriting: 'Dancing Script', cursive;
+  --font-modern: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-modern);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-handwriting);
+  font-weight: 700;
+}
+
+button {
+  font-family: var(--font-modern);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Hide scrollbar for aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
