@@ -62,7 +62,7 @@ const Page4_Memories = ({ onNext }) => {
               <img 
                 src={img} 
                 alt="Memory" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                className="contain-image"
               />
             </div>
             <p style={{ 

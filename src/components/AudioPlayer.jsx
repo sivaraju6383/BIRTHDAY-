@@ -21,7 +21,7 @@ const AudioPlayer = ({ isPlaying, togglePlay }) => {
           ref={iframeRef}
           width="100" 
           height="100" 
-          src="https://www.youtube.com/embed/nyuo9-OjNNg?enablejsapi=1&autoplay=0&loop=1&playlist=nyuo9-OjNNg" 
+          src="https://www.youtube.com/embed/nyuo9-OjNNg?enablejsapi=1&autoplay=1&loop=1&playlist=nyuo9-OjNNg" 
           title="Background Music" 
           frameBorder="0" 
           allow="autoplay; encrypted-media"
