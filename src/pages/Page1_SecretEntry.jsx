@@ -114,7 +114,9 @@ const Page1_SecretEntry = ({ onUnlock }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            position: 'relative'
+            position: 'relative',
+            height: '500px',
+            width: '100%'
           }}>
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(255,255,255,0.6), transparent)' }}></div>
             <div className="glass-card animate-fade-in delay-2" style={{
