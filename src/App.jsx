@@ -1,4 +1,25 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
+
+// Simple Error Boundary to catch rendering errors and fallback to password page
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      // Fallback to secret entry page
+      return <Page1_SecretEntry onUnlock={handleLoginSuccess} />;
+    }
+    return this.props.children;
+  }
+}
 import FloatingElements from './components/FloatingElements';
 import AudioPlayer from './components/AudioPlayer';
 
@@ -34,28 +55,35 @@ function App() {
   };
 
   const handleLoginSuccess = () => {
+    console.log('handleLoginSuccess called');
     setIsPlayingMusic(true);
     nextPage();
   };
 
   const renderPage = () => {
-    switch (currentPage) {
-      case 0: return <Loading onComplete={nextPage} />;
-      case 1: return <Page1_SecretEntry onUnlock={handleLoginSuccess} />;
-      case 2: return <Page2_GrandSurprise onNext={nextPage} />;
-      case 3: return <Page3_Message onNext={nextPage} />;
-      case 4: return <Page4_Memories onNext={nextPage} />;
-      case 5: return <Page5_Reasons onNext={nextPage} />;
-      case 6: return <Page6_Envelopes onNext={nextPage} />;
-      case 7: return <Page7_Quotes onNext={nextPage} />;
-      case 8: return <Page8_Timeline onNext={nextPage} />;
-      case 9: return <Page9_HiddenSurprise onNext={nextPage} />;
-      case 10: return <Page10_LoveWheel onNext={nextPage} />;
-      case 11: return <Page11_BirthdayCake onNext={nextPage} />;
-      case 12: return <Page12_PhotoMovie onNext={nextPage} />;
-      case 13: return <Page13_FinalLetter onNext={nextPage} />;
-      case 14: return <Page14_FinalSurprise />;
-      default: return null;
+    console.log('RenderPage called with currentPage:', currentPage);
+    try {
+      switch (currentPage) {
+        case 0: return <Loading onComplete={nextPage} />;
+        case 1: return <Page1_SecretEntry onUnlock={handleLoginSuccess} />;
+        case 2: return <Page2_GrandSurprise onNext={nextPage} />;
+        case 3: return <Page3_Message onNext={nextPage} />;
+        case 4: return <Page4_Memories onNext={nextPage} />;
+        case 5: return <Page5_Reasons onNext={nextPage} />;
+        case 6: return <Page6_Envelopes onNext={nextPage} />;
+        case 7: return <Page7_Quotes onNext={nextPage} />;
+        case 8: return <Page8_Timeline onNext={nextPage} />;
+        case 9: return <Page9_HiddenSurprise onNext={nextPage} />;
+        case 10: return <Page10_LoveWheel onNext={nextPage} />;
+        case 11: return <Page11_BirthdayCake onNext={nextPage} />;
+        case 12: return <Page12_PhotoMovie onNext={nextPage} />;
+        case 13: return <Page13_FinalLetter onNext={nextPage} />;
+        case 14: return <Page14_FinalSurprise />;
+        default: return <Page1_SecretEntry onUnlock={handleLoginSuccess} />;
+      }
+    } catch (err) {
+      console.error('Render error:', err);
+      return <Page1_SecretEntry onUnlock={handleLoginSuccess} />;
     }
   };
 
